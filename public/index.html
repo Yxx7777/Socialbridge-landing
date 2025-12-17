@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Socialbridge — Secure non-custodial TON wallet</title>
+    <meta
+      name="description"
+      content="Socialbridge is a security-first, non-custodial TON wallet. Manage TON assets, connect to dApps via TON Connect, and use DeFi features such as swaps and staking."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <div class="badge">TON Wallet</div>
+        <h1>Socialbridge</h1>
+        <p class="subtitle">
+          Security-first, non-custodial wallet for the TON ecosystem.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:your@email.com">Contact</a>
+          <a class="btn btn-secondary" href="#features">Features</a>
+        </div>
+      </header>
+
+      <section id="features" class="card">
+        <h2>What it is</h2>
+        <p>
+          Socialbridge is built by a small independent team with a focus on user
+          safety and a smooth on-chain experience. Keys stay on-device and are
+          protected with an encrypted vault-style architecture. We do not custody
+          user funds.
+        </p>
+
+        <h3>Key features</h3>
+        <ul>
+          <li>Non-custodial: user keys stay under user control</li>
+          <li>Encrypted vault architecture for sensitive data</li>
+          <li>Multi-account support</li>
+          <li>TON Connect for dApps</li>
+          <li>Jettons & NFTs support</li>
+          <li>Built-in DeFi flows (swaps, liquidity, staking)</li>
+        </ul>
+
+        <h3>Fiat on-ramp / off-ramp</h3>
+        <p>
+          We are integrating fiat on-ramp/off-ramp providers to let users buy and
+          sell crypto directly from the wallet UI. KYC/AML and payment processing
+          are handled by the provider.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Links</h2>
+        <ul class="links">
+          <li><a href="./privacy.html">Privacy Policy</a></li>
+          <li><a href="./terms.html">Terms of Use</a></li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Socialbridge. All rights reserved.</p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
