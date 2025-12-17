@@ -45,17 +45,21 @@
 
         <h3>Fiat on-ramp / off-ramp</h3>
         <p>
-          We are integrating fiat on-ramp/off-ramp providers to let users buy and
-          sell crypto directly from the wallet UI. KYC/AML and payment processing
-          are handled by the provider.
+          We plan to integrate third-party fiat on-ramp/off-ramp providers so
+          users can buy and sell crypto directly from the wallet UI. KYC/AML and
+          payment processing are handled by the provider.
         </p>
       </section>
 
       <section id="contact" class="card">
         <h2>Contact</h2>
         <p>
-          Email: <a href="mailto:MoonPaydotcom@proton.me">MoonPaydotcom@proton.me</a>
+          Email: <span id="contactEmail">socialbridge.repaying973@passinbox.com</span>
+          <button class="btn btn-secondary" id="copyEmailBtn" type="button">
+            Copy
+          </button>
         </p>
+        <p id="copyStatus" style="margin: 0; opacity: 0.8;"></p>
       </section>
 
       <section class="card">
@@ -73,6 +77,22 @@
 
     <script>
       document.getElementById("year").textContent = String(new Date().getFullYear());
+
+      const emailEl = document.getElementById("contactEmail");
+      const btn = document.getElementById("copyEmailBtn");
+      const statusEl = document.getElementById("copyStatus");
+
+      btn.addEventListener("click", async () => {
+        const email = emailEl.textContent || "";
+        statusEl.textContent = "";
+        try {
+          await navigator.clipboard.writeText(email);
+          statusEl.textContent = "Copied.";
+          setTimeout(() => (statusEl.textContent = ""), 1500);
+        } catch {
+          statusEl.textContent = "Copy failed. Please select and copy manually.";
+        }
+      });
     </script>
   </body>
 </html>
