@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DEX Modules Program — Socialbridge</title>
+    <meta
+      name="description"
+      content="Learn how Socialbridge is building a modular DEX adapter layer for STON.fi, DeDust, and SwapCoffee with consistent safety checks and faster updates."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <div class="badge">In Progress</div>
+        <h1>DEX Modules Program</h1>
+        <p class="subtitle">
+          We are modularizing DeFi integrations so every swap, pool, or staking flow runs through the same safe, repeatable pipeline.
+        </p>
+      </header>
+
+      <section class="card">
+        <p>
+          The team is building headless adapters for STON.fi, DeDust, and SwapCoffee. Each adapter outputs structured
+          <code>TxIntent[]</code> objects, while the wallet remains responsible for sandbox emulation, risk gates, and sending the
+          final transaction.
+        </p>
+        <p>
+          This separation keeps wallet UX familiar and lets us deploy fixes or improvements to one DEX without touching the others.
+          If a provider goes offline, the wallet can fall back automatically and keep your flow moving.
+        </p>
+        <p>
+          Users will soon be able to pick their preferred DEX per swap, pool, or staking session, all from the same secure screen.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>User benefits</h2>
+        <ul>
+          <li>Consistent safety checks and simulations across every DEX</li>
+          <li>Faster updates with independent rollout per module</li>
+          <li>Freedom to choose the venue you trust, plus automatic fallback</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <a class="btn" href="./index.html">Back to main page</a>
+      </section>
+    </main>
+  </body>
+</html>
+
