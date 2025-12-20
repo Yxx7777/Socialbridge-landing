@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Engineering Approach — Socialbridge</title>
+    <meta
+      name="description"
+      content="Learn how Socialbridge is built: modular architecture, transaction emulation, a portable theme editor, and 337 automated tests that protect every release."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <div class="badge">Process</div>
+        <h1>Engineering Approach</h1>
+        <p class="subtitle">
+          Socialbridge is delivered through repeatable guardrails: modular packages, pre-flight simulations, portable design tooling, and a growing automated test lab.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Architecture guardrails</h2>
+        <p>
+          The wallet ships as a modular stack of packages (core, domain, network, crypto runtime) so presentation layers stay thin and replaceable. Strict capability
+          injection keeps secrets inside the vault—keys never hop into UI code, and sensitive calls flow through dedicated adapters only.
+        </p>
+        <ul>
+          <li>Clear separation of vault logic, blockchain drivers, and experience layer</li>
+          <li>Definition-of-done checklists for every module before it reaches users</li>
+          <li>Architecture Decision Records capture each guardrail for future audits</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Pre-flight simulation & risk gates</h2>
+        <p>
+          Before a TON transaction is broadcast, the wallet replays it through a sandbox virtual machine and TonAPI emulation. Users see final balances, money paths, and
+          excess refunds before approving.
+        </p>
+        <ul>
+          <li>Composite emulator (Sandbox + TonAPI) for accuracy and speed</li>
+          <li>Money-path inspector shows every hop, return, and jetton mint</li>
+          <li>Risk engine issues bounce verdicts and compensation hints in plain language</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Theme & interface studio</h2>
+        <p>
+          A standalone theme editor manipulates runtime tokens, grids, and GPU shaders so partners can reskin the wallet or embed the editor inside their own apps. Layout
+          constraints mirror design tools, enabling rapid brand-ready launches.
+        </p>
+        <ul>
+          <li>Live editing of typography, icon sets, surfaces, and motion textures</li>
+          <li>Portable editor package drops into any project with the same token schema</li>
+          <li>Runtime CSS variable graph keeps design changes atomic and reversible</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Quality discipline</h2>
+        <p>
+          The project currently runs 337 automated tests across vault logic, DeFi flows, and UI contracts. Every feature ships with a prompt log, checklist, and rollback
+          plan so regressions are easy to detect and unwind.
+        </p>
+        <ul>
+          <li>Unit, integration, and scenario suites cover swaps, staking, and risk gates</li>
+          <li>Prompt cookbooks and LEGO-style plans document each major refactor</li>
+          <li>Release notes track what changed, why it changed, and how to revert safely</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <a class="btn" href="./index.html">Back to main page</a>
+      </section>
+    </main>
+  </body>
+</html>
+
