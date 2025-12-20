@@ -23,13 +23,13 @@
       <section class="card">
         <h2>Security-first vault</h2>
         <p>
-          Socialbridge keeps private keys on your device inside an encrypted vault, so
-          only you can authorize access. Nothing ever leaves your hardware unless you
-          explicitly export an encrypted backup.
+          Socialbridge keeps private keys on your device inside a sealed vault dedicated exclusively to secrets, with a separate app vault
+          for sensitive metadata such as account lists and history. Nothing leaves your hardware unless you explicitly export an encrypted
+          backup.
         </p>
         <ul>
+          <li>Dedicated secret vault plus an app vault for confidential metadata</li>
           <li>End-to-end on-device storage with secure enclave support</li>
-          <li>Vault unlock secured with hardware-backed PINs</li>
           <li>Non-custodial by design: we never see seeds or passphrases</li>
         </ul>
       </section>

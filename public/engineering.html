@@ -6,7 +6,7 @@
     <title>Engineering Approach — Socialbridge</title>
     <meta
       name="description"
-      content="Learn how Socialbridge is built: modular architecture, transaction emulation, a portable theme editor, and 337 automated tests that protect every release."
+      content="Learn how Socialbridge is built: modular architecture, sandbox transaction emulation, a portable theme editor, and 337 automated tests that protect every release."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -24,23 +24,37 @@
         <h2>Architecture guardrails</h2>
         <p>
           The wallet ships as a modular stack of packages (core, domain, network, crypto runtime) so presentation layers stay thin and replaceable. Strict capability
-          injection keeps secrets inside the vault—keys never hop into UI code, and sensitive calls flow through dedicated adapters only.
+          injection and a dual-vault model keep secrets sealed—keys live inside the secret vault, while the app vault stores confidential metadata such as account lists
+          and history.
         </p>
         <ul>
-          <li>Clear separation of vault logic, blockchain drivers, and experience layer</li>
+          <li>Clear separation of secret vault, app vault, blockchain drivers, and experience layer</li>
           <li>Definition-of-done checklists for every module before it reaches users</li>
           <li>Architecture Decision Records capture each guardrail for future audits</li>
         </ul>
       </section>
 
       <section class="card">
-        <h2>Pre-flight simulation & risk gates</h2>
+        <h2>Cryptography stack</h2>
         <p>
-          Before a TON transaction is broadcast, the wallet replays it through a sandbox virtual machine and TonAPI emulation. Users see final balances, money paths, and
-          excess refunds before approving.
+          The vault encrypts every secret with libsodium primitives: Argon2id derives device-bound keys, and XChaCha20-Poly1305 keeps the ciphertext authenticated even if
+          storage is copied. Per-record salts and nonces come from libsodium’s randombytes_buf (backed by the OS CSPRNG), so the same secret never encrypts to the same bytes twice.
         </p>
         <ul>
-          <li>Composite emulator (Sandbox + TonAPI) for accuracy and speed</li>
+          <li>Argon2id hardening with tuned memory and time costs resists brute-force attempts on stolen backups</li>
+          <li>XChaCha20-Poly1305 provides authenticated encryption with 192-bit nonces, preventing tampering and replay</li>
+          <li>libsodium’s audited implementations run in constant time and ship with built-in secure wipe utilities</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Pre-flight simulation & risk gates</h2>
+        <p>
+          Before a TON transaction is broadcast, the wallet replays it through a local sandbox virtual machine. Users see final balances, money paths, and excess refunds
+          with full fidelity, without sending real funds during the preview step.
+        </p>
+        <ul>
+          <li>Full-chain sandbox emulator reproduces the contract execution without broadcasting</li>
           <li>Money-path inspector shows every hop, return, and jetton mint</li>
           <li>Risk engine issues bounce verdicts and compensation hints in plain language</li>
         </ul>
