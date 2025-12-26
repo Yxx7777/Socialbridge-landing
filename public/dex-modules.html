@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DEX Modules Program — Socialbridge</title>
+    <title>STON.fi Module — Socialbridge</title>
     <meta
       name="description"
-      content="Learn how Socialbridge is building a modular DEX adapter layer for STON.fi, DeDust, and SwapCoffee with consistent safety checks and faster updates."
+      content="STON.fi module development status: stonfi-kit, liquidity, staking, and safe multi-step DeFi UX for Socialbridge."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -14,33 +14,74 @@
     <main class="container">
       <header class="hero">
         <div class="badge">In Progress</div>
-        <h1>DEX Modules Program</h1>
+        <h1>STON.fi Module <span style="opacity: 0.75;">(Under Active Development)</span></h1>
         <p class="subtitle">
-          We are modularizing DeFi integrations so every swap, pool, or staking flow runs through the same safe, repeatable pipeline.
+          Socialbridge is a non-custodial TON wallet currently in active development (dev-only/private build). Our goal is to make
+          liquidity and staking feel wallet-native: clear UX states, reliable execution, and safe resolution paths for multi-step DeFi
+          actions.
         </p>
       </header>
 
       <section class="card">
+        <h2>What we are building</h2>
         <p>
-          The team is building headless adapters for STON.fi, DeDust, and SwapCoffee. Each adapter outputs structured
-          <code>TxIntent[]</code> objects, while the wallet remains responsible for sandbox emulation, risk gates, and sending the
-          final transaction.
+          We are implementing a dedicated STON.fi integration module (<code>stonfi-kit</code>) so the STON.fi flows are:
         </p>
+        <ul>
+          <li><strong>Testable</strong> (integration/regression tests, fixtures)</li>
+          <li><strong>Maintainable</strong> (clean interfaces and isolated dependencies)</li>
+          <li><strong>Reliable</strong> (clear transaction lifecycle and predictable outcomes)</li>
+        </ul>
         <p>
-          This separation keeps wallet UX familiar and lets us deploy fixes or improvements to one DEX without touching the others.
-          If a provider goes offline, the wallet can fall back automatically and keep your flow moving.
-        </p>
-        <p>
-          Users will soon be able to pick their preferred DEX per swap, pool, or staking session, all from the same secure screen.
+          <strong>Security note:</strong> key management and signing remain inside the wallet. The module never handles secrets and only
+          receives a generic transaction-sender interface.
         </p>
       </section>
 
       <section class="card">
-        <h2>User benefits</h2>
+        <h2>Deliverables (in progress)</h2>
+
+        <h3>1) Single-sided liquidity provision (one-token entry)</h3>
+        <p>
+          Users can provide liquidity by depositing a single token (e.g., TON). The wallet orchestrates quote/simulation → user
+          confirmation → required swap(s) → add liquidity, and shows a clear lifecycle for each step.
+        </p>
+
+        <h3>2) Clear transaction lifecycle UX</h3>
+        <p>A consistent flow state machine is used across DeFi actions:</p>
+        <p>
+          <code>prepare → awaiting signature → sent → confirmed / failed / canceled</code>
+        </p>
+        <p>with safe retry behavior and understandable error messages.</p>
+
+        <h3>3) In-wallet completion / refund path</h3>
+        <p>
+          Multi-step liquidity actions can sometimes end up incomplete. We are implementing a safe in-wallet path to finalize or refund
+          without requiring users to switch to the web UI.
+        </p>
+
+        <h3>4) Core staking flows</h3>
+        <p>Stake/unstake, staking positions display, and basic activity history in-wallet.</p>
+      </section>
+
+      <section class="card">
+        <h2>Milestones (high level)</h2>
         <ul>
-          <li>Consistent safety checks and simulations across every DEX</li>
-          <li>Faster updates with independent rollout per module</li>
-          <li>Freedom to choose the venue you trust, plus automatic fallback</li>
+          <li>
+            <strong>M1 — Foundation:</strong> stonfi-kit scaffold, clean API, normalized models, error taxonomy, flow state machine
+            skeleton
+          </li>
+          <li><strong>M2 — Single-sided liquidity:</strong> production-ready orchestration + UX lifecycle</li>
+          <li><strong>M3 — Completion/refund + hardening:</strong> incomplete attempts, timeouts, rounding/slippage boundaries</li>
+          <li><strong>M4 — Staking + quality:</strong> staking core flows, integration/regression tests, minimal documentation/demo</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Links</h2>
+        <ul class="links">
+          <li><a href="./index.html">Website</a></li>
+          <li><a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub (landing)</a></li>
         </ul>
       </section>
 
