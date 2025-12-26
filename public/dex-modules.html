@@ -6,7 +6,7 @@
     <title>STON.fi Module — Socialbridge</title>
     <meta
       name="description"
-      content="STON.fi module development status: stonfi-kit, liquidity, staking, and safe multi-step DeFi UX for Socialbridge."
+      content="STON.fi module development status: stonfi-kit, wallet-native liquidity flows, and safe multi-step DeFi lifecycle."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -16,51 +16,52 @@
         <div class="badge">In Progress</div>
         <h1>STON.fi Module <span style="opacity: 0.75;">(Under Active Development)</span></h1>
         <p class="subtitle">
-          Socialbridge is a non-custodial TON wallet currently in active development (dev-only/private build). Our goal is to make
-          liquidity and staking feel wallet-native: clear UX states, reliable execution, and safe resolution paths for multi-step DeFi
-          actions.
+          Socialbridge is a non-custodial TON wallet currently in active development (dev-only/private build). Our goal is to deliver a
+          reusable, wallet-integrable STON.fi integration module for the TON community — so any wallet can embed STON.fi DeFi flows with
+          consistent UX and predictable execution.
         </p>
       </header>
 
       <section class="card">
         <h2>What we are building</h2>
         <p>
-          We are implementing a dedicated STON.fi integration module (<code>stonfi-kit</code>) so the STON.fi flows are:
+          We are building a dedicated STON.fi integration kit (<code>stonfi-kit</code>) designed to be:
         </p>
         <ul>
-          <li><strong>Testable</strong> (integration/regression tests, fixtures)</li>
-          <li><strong>Maintainable</strong> (clean interfaces and isolated dependencies)</li>
-          <li><strong>Reliable</strong> (clear transaction lifecycle and predictable outcomes)</li>
+          <li><strong>Embeddable</strong>: integrates via a minimal wallet-facing interface (a generic transaction-sender)</li>
+          <li><strong>Testable</strong>: regression/integration tests + fixtures for critical paths</li>
+          <li><strong>Maintainable</strong>: clean APIs, isolated dependencies, clear versioning</li>
+          <li><strong>Reliable</strong>: explicit flow lifecycle and well-defined outcomes for multi-step actions</li>
         </ul>
         <p>
-          <strong>Security note:</strong> key management and signing remain inside the wallet. The module never handles secrets and only
-          receives a generic transaction-sender interface.
+          <strong>Security note:</strong> key management and signing always remain inside the host wallet. The module never handles
+          secrets.
         </p>
       </section>
 
       <section class="card">
         <h2>Deliverables (in progress)</h2>
 
-        <h3>1) Single-sided liquidity provision (one-token entry)</h3>
+        <h3>Wallet-native single-sided liquidity (one-token entry)</h3>
         <p>
-          Users can provide liquidity by depositing a single token (e.g., TON). The wallet orchestrates quote/simulation → user
-          confirmation → required swap(s) → add liquidity, and shows a clear lifecycle for each step.
+          Users can provide liquidity starting from a single token (e.g., TON). The wallet experience orchestrates the required steps
+          (quote/simulation → user confirmation → swap(s) if needed → add liquidity) and presents clear UX states at each stage.
         </p>
 
-        <h3>2) Clear transaction lifecycle UX</h3>
-        <p>A consistent flow state machine is used across DeFi actions:</p>
+        <h3>Consistent transaction lifecycle model</h3>
+        <p>We are implementing a shared lifecycle model for DeFi actions:</p>
         <p>
           <code>prepare → awaiting signature → sent → confirmed / failed / canceled</code>
         </p>
-        <p>with safe retry behavior and understandable error messages.</p>
+        <p>with safe retry behavior and user-friendly errors.</p>
 
-        <h3>3) In-wallet completion / refund path</h3>
+        <h3>Safe recovery for incomplete multi-step liquidity</h3>
         <p>
-          Multi-step liquidity actions can sometimes end up incomplete. We are implementing a safe in-wallet path to finalize or refund
-          without requiring users to switch to the web UI.
+          Multi-step liquidity actions may end up incomplete due to network delays, timeouts, or partial execution. We are implementing
+          safe recovery tools and guidance, and (where supported) planning in-wallet completion/refund actions.
         </p>
 
-        <h3>4) Core staking flows</h3>
+        <h3>Core staking flows (planned)</h3>
         <p>Stake/unstake, staking positions display, and basic activity history in-wallet.</p>
       </section>
 
@@ -68,12 +69,11 @@
         <h2>Milestones (high level)</h2>
         <ul>
           <li>
-            <strong>M1 — Foundation:</strong> stonfi-kit scaffold, clean API, normalized models, error taxonomy, flow state machine
-            skeleton
+            <strong>M1 — Foundation:</strong> stonfi-kit scaffold, clean API, normalized models, error taxonomy, lifecycle model skeleton
           </li>
           <li><strong>M2 — Single-sided liquidity:</strong> production-ready orchestration + UX lifecycle</li>
-          <li><strong>M3 — Completion/refund + hardening:</strong> incomplete attempts, timeouts, rounding/slippage boundaries</li>
-          <li><strong>M4 — Staking + quality:</strong> staking core flows, integration/regression tests, minimal documentation/demo</li>
+          <li><strong>M3 — Recovery + hardening:</strong> incomplete attempts, timeouts, rounding/slippage boundaries</li>
+          <li><strong>M4 — Staking + quality:</strong> staking flows, integration/regression tests, minimal documentation/demo</li>
         </ul>
       </section>
 
