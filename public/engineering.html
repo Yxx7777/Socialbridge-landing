@@ -6,90 +6,129 @@
     <title>Engineering Approach — Socialbridge</title>
     <meta
       name="description"
-      content="Learn how Socialbridge is built: modular architecture, sandbox transaction emulation, a portable theme editor, and 337 automated tests that protect every release."
+      content="How Socialbridge is built: modular architecture, a dual-vault crypto stack, sandbox transaction emulation, a token-based design system, and layered automated test lanes."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <header class="hero">
-        <div class="badge">Process</div>
-        <h1>Engineering Approach</h1>
+        <span class="eyebrow">Process</span>
+        <h1>Engineering approach</h1>
         <p class="subtitle">
-          Socialbridge is delivered through repeatable guardrails: modular packages, pre-flight simulations, portable design tooling, and a growing automated test lab.
+          Socialbridge is delivered through repeatable guardrails: modular
+          packages, pre-flight simulation, a token-based design system, and
+          layered automated test lanes.
         </p>
       </header>
 
-      <section class="card">
-        <h2>Architecture guardrails</h2>
-        <p>
-          The wallet ships as a modular stack of packages (core, domain, network, crypto runtime) so presentation layers stay thin and replaceable. Strict capability
-          injection and a dual-vault model keep secrets sealed—keys live inside the secret vault, while the app vault stores confidential metadata such as account lists
-          and history.
-        </p>
-        <ul>
-          <li>Clear separation of secret vault, app vault, blockchain drivers, and experience layer</li>
-          <li>Definition-of-done checklists for every module before it reaches users</li>
-          <li>Architecture Decision Records capture each guardrail for future audits</li>
-        </ul>
-      </section>
+      <div class="grid grid-2">
+        <section class="card interactive">
+          <h2>Architecture guardrails</h2>
+          <p>
+            The wallet ships as a modular stack of packages (core, domain,
+            network, crypto runtime) so presentation layers stay thin and
+            replaceable. A dual-vault model keeps secrets sealed — keys live in
+            the secret vault, while the app vault stores confidential metadata
+            such as account lists and history.
+          </p>
+          <ul>
+            <li>Clear separation of secret vault, app vault, blockchain drivers, and experience layer</li>
+            <li>Strict import direction (app → features → domain → infra → shared)</li>
+            <li>Definition-of-done checklists for every module before it reaches users</li>
+          </ul>
+        </section>
 
-      <section class="card">
-        <h2>Cryptography stack</h2>
-        <p>
-          The vault encrypts every secret with libsodium primitives: Argon2id derives device-bound keys, and XChaCha20-Poly1305 keeps the ciphertext authenticated even if
-          storage is copied. Per-record salts and nonces come from libsodium’s randombytes_buf (backed by the OS CSPRNG), so the same secret never encrypts to the same bytes twice.
-        </p>
-        <ul>
-          <li>Argon2id hardening with tuned memory and time costs resists brute-force attempts on stolen backups</li>
-          <li>XChaCha20-Poly1305 provides authenticated encryption with 192-bit nonces, preventing tampering and replay</li>
-          <li>libsodium’s audited implementations run in constant time and ship with built-in secure wipe utilities</li>
-        </ul>
-      </section>
+        <section class="card interactive">
+          <h2>Cryptography stack</h2>
+          <p>
+            The vault encrypts every secret with libsodium primitives: Argon2id
+            derives device-bound keys, and XChaCha20-Poly1305 keeps the ciphertext
+            authenticated even if storage is copied. Per-record salts and nonces
+            come from the OS CSPRNG, so the same secret never encrypts to the same
+            bytes twice.
+          </p>
+          <ul>
+            <li>Argon2id hardening with tuned memory/time costs resists brute-force on stolen backups</li>
+            <li>XChaCha20-Poly1305 authenticated encryption with 192-bit nonces prevents tampering and replay</li>
+            <li>Audited constant-time implementations with built-in secure wipe</li>
+          </ul>
+        </section>
 
-      <section class="card">
-        <h2>Pre-flight simulation & risk gates</h2>
-        <p>
-          Before a TON transaction is broadcast, the wallet replays it through a local sandbox virtual machine. Users see final balances, money paths, and excess refunds
-          with full fidelity, without sending real funds during the preview step.
-        </p>
-        <ul>
-          <li>Full-chain sandbox emulator reproduces the contract execution without broadcasting</li>
-          <li>Money-path inspector shows every hop, return, and jetton mint</li>
-          <li>Risk engine issues bounce verdicts and compensation hints in plain language</li>
-        </ul>
-      </section>
+        <section class="card interactive">
+          <h2>Pre-flight simulation &amp; risk gates</h2>
+          <p>
+            Before a TON transaction is broadcast, the wallet replays it through a
+            local sandbox virtual machine. Users see final balances, money paths,
+            and excess refunds with full fidelity, without sending real funds
+            during the preview step.
+          </p>
+          <ul>
+            <li>Full-chain sandbox emulator reproduces contract execution without broadcasting</li>
+            <li>Money-path inspector shows every hop, return, and jetton mint</li>
+            <li>Risk engine issues bounce verdicts and compensation hints in plain language</li>
+          </ul>
+        </section>
 
-      <section class="card">
-        <h2>Theme & interface studio</h2>
-        <p>
-          A standalone theme editor manipulates runtime tokens, grids, and GPU shaders so partners can reskin the wallet or embed the editor inside their own apps. Layout
-          constraints mirror design tools, enabling rapid brand-ready launches.
-        </p>
-        <ul>
-          <li>Live editing of typography, icon sets, surfaces, and motion textures</li>
-          <li>Portable editor package drops into any project with the same token schema</li>
-          <li>Runtime CSS variable graph keeps design changes atomic and reversible</li>
-        </ul>
-      </section>
+        <section class="card interactive">
+          <h2>Design system &amp; theming</h2>
+          <p>
+            The UI is driven by a runtime design-token system (spacing, radius,
+            color, motion) backed by an allowlist, so design changes stay atomic
+            and reversible. A theme editor for design iteration is available as a
+            developer-only tool.
+          </p>
+          <ul>
+            <li>Runtime CSS variable graph keeps styling consistent across surfaces</li>
+            <li>Shared UI package powers both the web wallet and the Telegram Mini App</li>
+            <li>Token allowlist validation guards against ad-hoc hardcoded values</li>
+          </ul>
+        </section>
 
-      <section class="card">
-        <h2>Quality discipline</h2>
-        <p>
-          The project currently runs 337 automated tests across vault logic, DeFi flows, and UI contracts. Every feature ships with a prompt log, checklist, and rollback
-          plan so regressions are easy to detect and unwind.
-        </p>
-        <ul>
-          <li>Unit, integration, and scenario suites cover swaps, staking, and risk gates</li>
-          <li>Tech docs and modular rollout plans document each major refactor</li>
-          <li>Release notes track what changed, why it changed, and how to revert safely</li>
-        </ul>
-      </section>
+        <section class="card interactive">
+          <h2>Quality discipline</h2>
+          <p>
+            Features ship behind layered automated tests and a mandatory pre-push
+            gate. Each change carries a checklist and a rollback path so
+            regressions are easy to detect and unwind.
+          </p>
+          <ul>
+            <li>Unit, integration, and scenario suites across vault logic, DeFi flows, and UI contracts</li>
+            <li>End-to-end lanes for both the web wallet and the Telegram Mini App</li>
+            <li>Pre-push test gate plus security checks before code is published</li>
+          </ul>
+        </section>
+      </div>
 
-      <section class="card">
+      <section class="card" style="margin-top: 18px;">
         <a class="btn" href="./index.html">Back to main page</a>
+        <a class="btn btn-secondary" href="./delivered.html">What's delivered</a>
       </section>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
+      </footer>
     </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>
-

@@ -6,30 +6,62 @@
     <title>Socialbridge — Secure non-custodial TON wallet</title>
     <meta
       name="description"
-      content="Socialbridge is a security-first, non-custodial TON wallet. Manage TON assets, connect to dApps via TON Connect, and use DeFi features such as swaps and staking."
+      content="Socialbridge is a security-first, non-custodial TON wallet. Buy crypto, swap across TON DEXes, provide liquidity, stake, and connect to dApps via TON Connect — available as a Telegram Mini App."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <header class="hero">
-        <div class="badge">TON Wallet</div>
-        <h1>Socialbridge</h1>
+        <span class="eyebrow">TON Wallet · Telegram Mini App</span>
+        <h1>The security-first<br /><span class="gradient-text">non-custodial TON wallet</span></h1>
         <p class="subtitle">
-          Security-first, non-custodial wallet for the TON ecosystem.
+          Keys stay on your device in an encrypted vault. Buy crypto, swap across
+          TON DEXes, provide liquidity, stake, and connect to dApps — all from one
+          wallet, also available as a Telegram Mini App.
         </p>
         <div class="cta-row">
-          <a class="btn" href="/delivered.html">Already Delivered</a>
-          <a class="btn" href="/dex-modules.html">DEX Modules</a>
-          <a class="btn" href="/roadmap.html">Roadmap</a>
-          <a class="btn" href="/engineering.html">Engineering</a>
-          <a class="btn btn-secondary" href="/privacy.html">Privacy Policy</a>
-          <a class="btn btn-secondary" href="/terms.html">Terms of Use</a>
+          <a class="btn btn-primary" href="https://app.socialbridgeapp.com" target="_blank" rel="noopener noreferrer">Open Telegram Mini App</a>
+          <a class="btn" href="./delivered.html">What's delivered</a>
+          <a class="btn btn-secondary" href="./engineering.html">How it's built</a>
         </div>
-
       </header>
 
-      <section id="features" class="card">
+      <div class="section-head">
+        <h2>Highlights</h2>
+        <p class="lead">A non-custodial core with DeFi built in, shipped and running today.</p>
+      </div>
+      <div class="grid grid-3">
+        <section class="card feature interactive">
+          <div class="ficon">🔐</div>
+          <div class="row-between"><h3>Non-custodial vault</h3><span class="pill pill-live">Live</span></div>
+          <p>Private keys never leave your device. A dedicated secret vault holds signing keys; a separate app vault holds confidential metadata.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="ficon">⚡</div>
+          <div class="row-between"><h3>DeFi built in</h3><span class="pill pill-live">Live</span></div>
+          <p>Swaps, liquidity, farming, and staking across TON DEXes — previewed by sandbox simulation before you sign.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="ficon">✈️</div>
+          <div class="row-between"><h3>Telegram Mini App</h3><span class="pill pill-live">Live</span></div>
+          <p>Run the same wallet inside Telegram, deployed at app.socialbridgeapp.com.</p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top: 18px;">
         <h2>What it is</h2>
         <p>
           Socialbridge is built by a small independent team with a focus on user
@@ -37,51 +69,67 @@
           protected with an encrypted vault-style architecture. We do not custody
           user funds.
         </p>
-
-        <h3>Key features</h3>
-        <ul>
-          <li>Non-custodial: user keys stay under user control</li>
-          <li>Encrypted vault architecture for sensitive data</li>
-          <li>Multi-account support</li>
-          <li>TON Connect for dApps</li>
-          <li>Jettons & NFTs support</li>
-          <li>Built-in DeFi flows (swaps, liquidity, staking)</li>
-        </ul>
-
-        <h3>Fiat on-ramp / off-ramp</h3>
-        <p>
-          We plan to integrate third-party fiat on-ramp/off-ramp providers so
-          users can buy and sell crypto directly from the wallet UI. KYC/AML and
-          payment processing are handled by the provider.
-          Planned: fiat on-ramp/off-ramp integration via Changelly Fiat API (approved).
-        </p>
       </section>
 
-      <section id="contact" class="card">
+      <div class="section-head">
+        <h2>Features</h2>
+        <p class="lead">Honest status for each capability.</p>
+      </div>
+      <div class="grid grid-2">
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Encrypted vault &amp; key safety</h3><span class="pill pill-live">Live</span></div>
+          <p>Argon2id + XChaCha20-Poly1305 (libsodium) with a dual-vault split. Non-custodial by design.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Buy Crypto (fiat on-ramp)</h3><span class="pill pill-live">Live</span></div>
+          <p>Buy crypto from the wallet UI via the Changelly Fiat API. KYC/AML and payments handled by the provider.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Swaps across TON DEXes</h3><span class="pill pill-live">Live</span></div>
+          <p>Route swaps through STON.fi, DeDust, and swap.coffee, plus Changelly cross-asset exchange.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Liquidity &amp; farming</h3><span class="pill pill-live">Live</span></div>
+          <p>Provide and remove liquidity and farm on STON.fi, orchestrated with clear multi-step UX states.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Staking</h3><span class="pill pill-live">Live</span></div>
+          <p>Stake, unstake, and track positions and activity from inside the wallet.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>TON Connect &amp; multi-account</h3><span class="pill pill-live">Live</span></div>
+          <p>Connect to dApps in one tap and switch between multiple accounts with per-profile preferences.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>NFTs &amp; Jettons</h3><span class="pill pill-live">Live</span></div>
+          <p>View and send jettons and NFT collectibles in a unified asset view.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Fiat off-ramp (sell)</h3><span class="pill pill-progress">In progress</span></div>
+          <p>Selling crypto to fiat is in development on top of the same gateway.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>Desktop app</h3><span class="pill pill-progress">In progress</span></div>
+          <p>A desktop shell (Tauri) exists and builds; it is not yet a publicly shipped release.</p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top: 18px;">
         <h2>Contact</h2>
         <p>
           Email: <span id="contactEmail">socialbridge.repaying973@passinbox.com</span>
-          <button class="btn btn-secondary" id="copyEmailBtn" type="button">
-            Copy
-          </button>
+          <button class="btn btn-secondary" id="copyEmailBtn" type="button">Copy</button>
         </p>
         <p id="copyStatus" style="margin: 0; opacity: 0.8;"></p>
       </section>
 
-      <section class="card">
-        <h2>Links</h2>
-        <ul class="links">
-          <li><a href="./delivered.html">Already Delivered</a></li>
-          <li><a href="./dex-modules.html">DEX Modules Program</a></li>
-          <li><a href="./roadmap.html">Roadmap / Upcoming</a></li>
-          <li><a href="./engineering.html">Engineering Approach</a></li>
-          <li><a href="./privacy.html">Privacy Policy</a></li>
-          <li><a href="./terms.html">Terms of Use</a></li>
-        </ul>
-      </section>
-
       <footer class="footer">
-        <p>© <span id="year"></span> Socialbridge. All rights reserved.</p>
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
       </footer>
     </main>
 

@@ -6,64 +6,131 @@
     <title>Already Delivered — Socialbridge</title>
     <meta
       name="description"
-      content="Discover what has already shipped in Socialbridge: security-first vault, TON Connect multi-account support, and built-in DeFi flows with sandbox previews."
+      content="What has already shipped in Socialbridge: encrypted vault, TON Connect, Buy Crypto, swaps, liquidity, farming, staking, NFTs/jettons, and the Telegram Mini App."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <header class="hero">
-        <div class="badge">Product</div>
+        <span class="eyebrow">Product</span>
         <h1>Already Delivered</h1>
         <p class="subtitle">
-          A quick look at the features that are live in the Socialbridge wallet today.
+          The features that are live in the Socialbridge wallet today — including
+          the Telegram Mini App deployed at app.socialbridgeapp.com.
         </p>
       </header>
 
-      <section class="card">
-        <h2>Security-first vault</h2>
-        <p>
-          Socialbridge keeps private keys on your device inside a sealed vault dedicated exclusively to secrets, with a separate app vault
-          for sensitive metadata such as account lists and history. Nothing leaves your hardware unless you explicitly export an encrypted
-          backup.
-        </p>
-        <ul>
-          <li>Dedicated secret vault plus an app vault for confidential metadata</li>
-          <li>End-to-end on-device storage with secure enclave support</li>
-          <li>Non-custodial by design: we never see seeds or passphrases</li>
-        </ul>
-      </section>
+      <div class="grid grid-2">
+        <section class="card interactive">
+          <div class="row-between"><h2>Security-first vault</h2><span class="pill pill-live">Live</span></div>
+          <p>
+            Private keys stay on your device inside a sealed vault dedicated to
+            secrets, with a separate app vault for confidential metadata such as
+            account lists and history.
+          </p>
+          <ul>
+            <li>Dedicated secret vault plus an app vault for confidential metadata</li>
+            <li>libsodium crypto: Argon2id + XChaCha20-Poly1305</li>
+            <li>Non-custodial by design: we never see seeds or passphrases</li>
+          </ul>
+        </section>
 
-      <section class="card">
-        <h2>TON Connect + multi-account</h2>
-        <p>
-          Connect to TON dApps in one tap and keep multiple profiles ready for swaps,
-          collections, or testing. Each account carries its own limits, jettons, and NFTs.
-        </p>
-        <ul>
-          <li>Native TON Connect flow without manual address sharing</li>
-          <li>Fast account switching with per-profile preferences</li>
-          <li>Unified asset view spanning TON, jettons, and collectibles</li>
-        </ul>
-      </section>
+        <section class="card interactive">
+          <div class="row-between"><h2>TON Connect + multi-account</h2><span class="pill pill-live">Live</span></div>
+          <p>
+            Connect to TON dApps in one tap and keep multiple profiles ready for
+            swaps, collections, or testing. Each account carries its own jettons
+            and NFTs.
+          </p>
+          <ul>
+            <li>Native TON Connect flow without manual address sharing</li>
+            <li>Fast account switching with per-profile preferences</li>
+            <li>Unified asset view spanning TON, jettons, and collectibles</li>
+          </ul>
+        </section>
 
-      <section class="card">
-        <h2>Built-in DeFi flows</h2>
-        <p>
-          Run swaps, add liquidity, or stake without leaving the wallet. Every flow is
-          emulated via sandbox/TON API before you hit send, so outcomes are clear.
-        </p>
-        <ul>
-          <li>Preview final amounts, fees, and pool deltas before execution</li>
-          <li>Automated risk gates flag slippage or suspicious params</li>
-          <li>One approval to broadcast the verified transaction</li>
-        </ul>
-      </section>
+        <section class="card interactive">
+          <div class="row-between"><h2>Buy Crypto (fiat on-ramp)</h2><span class="pill pill-live">Live</span></div>
+          <p>
+            Buy crypto directly from the wallet UI through the Changelly Fiat API.
+            Identity verification (KYC/AML) and payment processing are handled by
+            the provider.
+          </p>
+        </section>
 
-      <section class="card">
+        <section class="card interactive">
+          <div class="row-between"><h2>Swaps across TON DEXes</h2><span class="pill pill-live">Live</span></div>
+          <p>
+            Swap assets using on-chain liquidity from STON.fi, DeDust, and
+            swap.coffee, plus Changelly cross-asset exchange — with quotes and
+            simulation before you sign.
+          </p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>Liquidity &amp; farming (STON.fi)</h2><span class="pill pill-live">Live</span></div>
+          <p>
+            Provide and remove liquidity and farm on STON.fi. Multi-step actions
+            are orchestrated with clear lifecycle states (prepare → sign → sent →
+            confirmed) and safe recovery guidance.
+          </p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>Staking</h2><span class="pill pill-live">Live</span></div>
+          <p>Stake and unstake, see staking positions, and review activity history in-wallet.</p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>NFTs &amp; Jettons</h2><span class="pill pill-live">Live</span></div>
+          <p>View and send jettons and NFT collectibles. (Native NFT minting and an in-wallet marketplace are not shipped yet.)</p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>Pre-flight simulation</h2><span class="pill pill-live">Live</span></div>
+          <p>
+            Every TON transaction is replayed through a local sandbox virtual
+            machine first, so you see final balances, money paths, and refunds
+            before broadcasting.
+          </p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>Telegram Mini App</h2><span class="pill pill-live">Live</span></div>
+          <p>The same wallet runs inside Telegram, deployed at app.socialbridgeapp.com.</p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top: 18px;">
         <a class="btn" href="./index.html">Back to main page</a>
+        <a class="btn btn-secondary" href="./roadmap.html">See what's next</a>
       </section>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
+      </footer>
     </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>
-

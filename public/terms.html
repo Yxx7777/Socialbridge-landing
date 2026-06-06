@@ -4,18 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Terms of Use — Socialbridge</title>
+    <meta name="description" content="Terms of Use for the Socialbridge non-custodial TON wallet." />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <section class="card">
         <h1>Terms of Use</h1>
-        <p>Last updated: 2025-12-17</p>
+        <p>Last updated: 2026-06-06</p>
 
         <h2>Non-custodial</h2>
         <p>
-          Socialbridge is intended to be non-custodial. Users are responsible
-          for safeguarding their own keys, recovery phrases, and devices.
+          Socialbridge is non-custodial. Users are solely responsible for
+          safeguarding their own keys, recovery phrases, passwords, and devices.
+          We never have access to your seed phrase or private keys and cannot
+          recover them on your behalf.
         </p>
 
         <h2>No financial advice</h2>
@@ -23,23 +38,41 @@
 
         <h2>Third-party services</h2>
         <p>
-          Fiat on-ramp/off-ramp and other integrations may be provided by third
-          parties. Their terms, fees, availability, and compliance requirements
-          apply.
+          Buy Crypto (fiat on-ramp), swaps, and other integrations are provided
+          by third parties such as Changelly and on-chain DEX protocols. Their
+          terms, fees, availability, identity verification (KYC/AML), and
+          compliance requirements apply to your use of those features.
+        </p>
+
+        <h2>Telegram Mini App</h2>
+        <p>
+          When used as a Telegram Mini App, your use is also subject to the
+          Telegram Mini App Terms and the Telegram Bot Terms.
         </p>
 
         <h2>Limitation of liability</h2>
         <p>
           Use at your own risk. We are not responsible for losses due to user
-          error, third-party services, network conditions, or unauthorized
-          access to user devices.
+          error, third-party services, network conditions, smart-contract
+          behavior, or unauthorized access to user devices.
         </p>
 
         <h2>Contact</h2>
         <p>Email: socialbridge.repaying973@passinbox.com</p>
-
-        <p><a href="./index.html">Back</a></p>
       </section>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
+      </footer>
     </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>

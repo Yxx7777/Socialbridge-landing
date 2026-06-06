@@ -3,78 +3,97 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>STON.fi Module — Socialbridge</title>
+    <title>DEX Modules — Socialbridge</title>
     <meta
       name="description"
-      content="STON.fi module development status: stonfi-kit, wallet-native liquidity flows, and safe multi-step DeFi lifecycle."
+      content="Socialbridge DEX integration modules: live STON.fi, DeDust, and swap.coffee flows in-wallet, with a reusable STON.fi kit planned for public release."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <header class="hero">
-        <div class="badge">In Progress</div>
-        <h1>STON.fi Module <span style="opacity: 0.75;">(Under Active Development)</span></h1>
+        <span class="eyebrow">DEX Integration</span>
+        <h1>DEX modules</h1>
         <p class="subtitle">
-          Socialbridge is a non-custodial TON wallet currently in active development (dev-only/private build). Our goal is to deliver a
-          reusable, wallet-integrable STON.fi integration module for the TON community — so any wallet can embed STON.fi DeFi flows with
-          consistent UX and predictable execution.
+          Provider-independent DeFi integrations are live in the wallet across
+          STON.fi, DeDust, and swap.coffee. A reusable STON.fi kit for the wider
+          TON community is planned for public release.
         </p>
       </header>
 
-      <section class="card">
-        <h2>What we are building</h2>
+      <div class="grid grid-3">
+        <section class="card feature interactive">
+          <div class="row-between"><h3>STON.fi</h3><span class="pill pill-live">Live</span></div>
+          <p>Swaps, liquidity provide/remove, farming, and staking flows.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>DeDust</h3><span class="pill pill-live">Live</span></div>
+          <p>Swap routing and on-chain reads through the provider data plane.</p>
+        </section>
+        <section class="card feature interactive">
+          <div class="row-between"><h3>swap.coffee</h3><span class="pill pill-live">Live</span></div>
+          <p>Aggregated swap routing as an independent provider lane.</p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top: 18px;">
+        <h2>A reusable STON.fi kit</h2>
         <p>
-          We are building a dedicated STON.fi integration kit (<code>stonfi-kit</code>) designed to be:
+          The STON.fi integration is structured as a kit (<code>stonfi-kit</code>)
+          designed to be embeddable in any wallet via a minimal, host-facing
+          transaction-sender interface. Today it powers Socialbridge; publishing
+          it as a standalone open-source package is planned.
         </p>
         <ul>
-          <li><strong>Embeddable</strong>: integrates via a minimal wallet-facing interface (a generic transaction-sender)</li>
-          <li><strong>Testable</strong>: regression/integration tests + fixtures for critical paths</li>
+          <li><strong>Embeddable</strong>: integrates via a generic wallet-facing transaction-sender</li>
+          <li><strong>Testable</strong>: regression/integration tests and fixtures for critical paths</li>
           <li><strong>Maintainable</strong>: clean APIs, isolated dependencies, clear versioning</li>
           <li><strong>Reliable</strong>: explicit flow lifecycle and well-defined outcomes for multi-step actions</li>
         </ul>
         <p>
-          <strong>Security note:</strong> key management and signing always remain inside the host wallet. The module never handles
-          secrets.
+          <strong>Security note:</strong> key management and signing always remain
+          inside the host wallet. The module never handles secrets.
         </p>
       </section>
 
       <section class="card">
-        <h2>Deliverables (in progress)</h2>
+        <h2>Capabilities</h2>
 
-        <h3>Wallet-native single-sided liquidity (one-token entry)</h3>
+        <div class="row-between"><h3>Wallet-native single-sided liquidity</h3><span class="pill pill-live">Live</span></div>
         <p>
-          Users can provide liquidity starting from a single token (e.g., TON). The wallet experience orchestrates the required steps
-          (quote/simulation → user confirmation → swap(s) if needed → add liquidity) and presents clear UX states at each stage.
+          Provide liquidity starting from a single token (e.g., TON). The wallet
+          orchestrates the steps — quote/simulation → confirmation → swap(s) if
+          needed → add liquidity — with clear UX at each stage.
         </p>
 
-        <h3>Consistent transaction lifecycle model</h3>
-        <p>We are implementing a shared lifecycle model for DeFi actions:</p>
-        <p>
-          <code>prepare → awaiting signature → sent → confirmed / failed / canceled</code>
-        </p>
+        <div class="row-between"><h3>Consistent transaction lifecycle</h3><span class="pill pill-live">Live</span></div>
+        <p>A shared lifecycle model for DeFi actions:</p>
+        <p><code>prepare → awaiting signature → sent → confirmed / failed / canceled</code></p>
         <p>with safe retry behavior and user-friendly errors.</p>
 
-        <h3>Safe recovery for incomplete multi-step liquidity</h3>
+        <div class="row-between"><h3>Safe recovery for multi-step liquidity</h3><span class="pill pill-live">Live</span></div>
         <p>
-          Multi-step liquidity actions may end up incomplete due to network delays, timeouts, or partial execution. We are implementing
-          safe recovery tools and guidance, and (where supported) planning in-wallet completion/refund actions.
+          Multi-step actions that end up incomplete (network delays, timeouts,
+          partial execution) get safe recovery tools and guidance. Note: a
+          one-shot, same-snapshot "provide + immediate farm deposit" path is not
+          shipped — provide and farm are distinct, verified steps.
         </p>
 
-        <h3>Core staking flows (planned)</h3>
-        <p>Stake/unstake, staking positions display, and basic activity history in-wallet.</p>
-      </section>
-
-      <section class="card">
-        <h2>Milestones (high level)</h2>
-        <ul>
-          <li>
-            <strong>M1 — Foundation:</strong> stonfi-kit scaffold, clean API, normalized models, error taxonomy, lifecycle model skeleton
-          </li>
-          <li><strong>M2 — Single-sided liquidity:</strong> production-ready orchestration + UX lifecycle</li>
-          <li><strong>M3 — Recovery + hardening:</strong> incomplete attempts, timeouts, rounding/slippage boundaries</li>
-          <li><strong>M4 — Staking + quality:</strong> staking flows, integration/regression tests, minimal documentation/demo</li>
-        </ul>
+        <div class="row-between"><h3>Farming &amp; staking</h3><span class="pill pill-live">Live</span></div>
+        <p>STON.fi farm deposit/withdraw and staking flows with positions and history in-wallet.</p>
       </section>
 
       <section class="card">
@@ -88,7 +107,19 @@
       <section class="card">
         <a class="btn" href="./index.html">Back to main page</a>
       </section>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
+      </footer>
     </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>
-

@@ -4,39 +4,106 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Privacy Policy — Socialbridge</title>
+    <meta name="description" content="Privacy Policy for the Socialbridge non-custodial TON wallet, including Cloudflare Turnstile bot protection." />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <section class="card">
         <h1>Privacy Policy</h1>
-        <p>Last updated: 2025-12-17</p>
+        <p>Last updated: 2026-06-06</p>
 
         <h2>Overview</h2>
         <p>
-          Socialbridge is a non-custodial wallet. We do not custody user funds or
-          private keys. This website is informational and provides contact
-          details for business inquiries.
+          Socialbridge is a non-custodial wallet. We do not custody user funds
+          or private keys, which stay on-device in an encrypted vault. This
+          policy describes the limited data processed when you use the wallet
+          and its features, including when it runs as a Telegram Mini App.
         </p>
 
         <h2>Data we collect</h2>
         <p>
-          We do not intentionally collect personal data from this website beyond
-          what you choose to provide if you contact us by email.
+          We do not run analytics or telemetry by default, and we do not
+          intentionally collect personal data beyond what you choose to provide
+          if you contact us by email. To operate, the app communicates with TON
+          network providers and the services listed below; such requests may
+          include public identifiers (for example wallet addresses and
+          transaction data) required by the relevant protocol.
         </p>
 
         <h2>Third-party services</h2>
         <p>
-          Fiat on-ramp/off-ramp services, when used inside the wallet, may
-          require identity verification (KYC/AML) and payment processing handled
-          by third-party providers under their own policies.
+          Some features connect to third-party services that process data under
+          their own privacy policies:
+        </p>
+        <ul>
+          <li>
+            <strong>Buy Crypto (fiat on-ramp):</strong> order creation is routed
+            through our fiat gateway to Changelly's Fiat API and its connected
+            payment providers. Identity verification (KYC/AML) and payment
+            processing are handled by those providers.
+          </li>
+          <li>
+            <strong>Swap / exchange:</strong> cross-asset swaps use our swap
+            gateway to Changelly and on-chain TON DEX liquidity sources.
+          </li>
+          <li>
+            <strong>TON network &amp; dApps:</strong> blockchain reads/writes use
+            TON RPC/API providers, and TON Connect bridges are used when you
+            connect to external dApps.
+          </li>
+        </ul>
+
+        <h2>Bot protection (Cloudflare Turnstile)</h2>
+        <p>
+          The Buy Crypto and Swap features use
+          <a class="inline-link" href="https://developers.cloudflare.com/turnstile/" target="_blank" rel="noopener noreferrer">Cloudflare Turnstile</a>
+          to distinguish humans from bots before creating an order. When you use
+          those features, Cloudflare processes minimal client-side signals (such
+          as IP address, TLS fingerprint, user-agent, and the widget sitekey with
+          its origin) solely to detect and block bots. These widgets run in
+          invisible mode, so no challenge interface is shown during normal use.
+          This processing is governed by
+          <a class="inline-link" href="https://www.cloudflare.com/en-gb/turnstile-privacy-policy/" target="_blank" rel="noopener noreferrer">Cloudflare's Turnstile Privacy Addendum</a>.
+        </p>
+
+        <h2>Telegram Mini App</h2>
+        <p>
+          When you use Socialbridge as a Telegram Mini App, your use is also
+          subject to the
+          <a class="inline-link" href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram Privacy Policy</a>
+          and the Telegram Mini App Terms. This policy takes precedence over
+          Telegram's Standard Bot Privacy Policy for the Socialbridge Mini App.
         </p>
 
         <h2>Contact</h2>
         <p>Email: socialbridge.repaying973@passinbox.com</p>
-
-        <p><a href="./index.html">Back</a></p>
       </section>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
+      </footer>
     </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>

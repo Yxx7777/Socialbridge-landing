@@ -6,48 +6,104 @@
     <title>Roadmap — Socialbridge</title>
     <meta
       name="description"
-      content="See what is next for Socialbridge: fiat on/off ramp, open-source modules, and additional platforms after audits."
+      content="What is next for Socialbridge: fiat off-ramp, full Telegram parity, a desktop release, open-source DEX modules, and more after audits."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="dot"></span> Socialbridge</a>
+      <div class="nav-links">
+        <a href="./delivered.html">Delivered</a>
+        <a href="./dex-modules.html">DEX Modules</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./engineering.html">Engineering</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+
     <main class="container">
       <header class="hero">
-        <div class="badge">Roadmap</div>
-        <h1>Upcoming Focus</h1>
+        <span class="eyebrow">Roadmap</span>
+        <h1>What's next</h1>
         <p class="subtitle">
-          A snapshot of the near-term plans we are executing before expanding beyond the current platforms.
+          The near-term lanes we are executing. Core wallet, DeFi, and the
+          Telegram Mini App already ship today — see
+          <a class="inline-link" href="./delivered.html">Delivered</a>.
         </p>
       </header>
 
-      <section class="card">
-        <h2>Fiat on/off ramp</h2>
-        <p>
-          We are integrating the Changelly Fiat API so you can buy or sell TON directly inside the wallet. Identity verification and
-          payment processing remain on the provider’s side, while funds land in the same secure vault.
-        </p>
-      </section>
+      <div class="grid grid-2">
+        <section class="card interactive">
+          <div class="row-between"><h2>Fiat off-ramp (sell)</h2><span class="pill pill-progress">In progress</span></div>
+          <p>
+            Selling crypto to fiat directly from the wallet, on top of the same
+            gateway that already powers Buy Crypto. Identity verification and
+            payouts stay on the provider's side.
+          </p>
+        </section>
 
-      <section class="card">
-        <h2>Open modules</h2>
-        <p>
-          After the DEX adapters stabilize, we will publish them in a dedicated public repository. This will let integrators reuse the
-          modules, file issues, and ship their own improvements with full transparency.
-        </p>
-      </section>
+        <section class="card interactive">
+          <div class="row-between"><h2>Full Telegram parity</h2><span class="pill pill-progress">In progress</span></div>
+          <p>
+            Bringing the remaining earn/rewards and financial lanes in the
+            Telegram Mini App to full parity with the web wallet.
+          </p>
+        </section>
 
-      <section class="card">
-        <h2>Additional platforms</h2>
-        <p>
-          Native mobile shells—and a browser extension if needed—are planned once the current security and audit checklist is cleared.
-          The same protections and flows will carry over to every device.
-        </p>
-      </section>
+        <section class="card interactive">
+          <div class="row-between"><h2>Desktop app</h2><span class="pill pill-progress">In progress</span></div>
+          <p>
+            A desktop shell (Tauri) builds today; hardening it into a publicly
+            shipped release is in progress.
+          </p>
+        </section>
 
-      <section class="card">
+        <section class="card interactive">
+          <div class="row-between"><h2>Open-source DEX modules</h2><span class="pill pill-planned">Planned</span></div>
+          <p>
+            Once the DEX adapters stabilize further, publish them as reusable
+            packages in a public repository so integrators can embed and improve
+            them.
+          </p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>NFT mint &amp; marketplace</h2><span class="pill pill-planned">Planned</span></div>
+          <p>
+            Native in-wallet NFT minting and marketplace flows, building on the
+            existing NFT view/send support.
+          </p>
+        </section>
+
+        <section class="card interactive">
+          <div class="row-between"><h2>Additional platforms</h2><span class="pill pill-planned">Planned</span></div>
+          <p>
+            Native mobile shells — and a browser extension if needed — once the
+            current security and audit checklist is cleared. The same protections
+            and flows carry over to every device.
+          </p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top: 18px;">
         <a class="btn" href="./index.html">Back to main page</a>
+        <a class="btn btn-secondary" href="./delivered.html">What's delivered</a>
       </section>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Socialbridge. Non-custodial TON wallet.</span>
+        <span class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="https://github.com/Yxx7777/Socialbridge-landing">GitHub</a>
+        </span>
+      </footer>
     </main>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>
-
